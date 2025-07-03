@@ -1,0 +1,333 @@
+{
+  "info": {
+    "name": "Biblioteca API - URLs Reais Amazon",
+    "description": "Collection com URLs reais da Amazon Brasil para teste de scraping",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "📚 Livros Principais",
+      "item": [
+        {
+          "name": "Importar Sapiens",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"https://www.amazon.com.br/Sapiens-Uma-Breve-Hist%C3%B3ria-Humanidade/dp/8525432180\",\n  \"autorId\": 1,\n  \"categoriaId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/livros/importar",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros", "importar"]
+            }
+          }
+        },
+        {
+          "name": "Importar O Poder do Hábito",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"https://www.amazon.com.br/poder-do-h%C3%A1bito-Charles-Duhigg/dp/8539004119\",\n  \"autorId\": 2,\n  \"categoriaId\": 2\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/livros/importar",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros", "importar"]
+            }
+          }
+        },
+        {
+          "name": "Importar Hábitos Atômicos",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"https://www.amazon.com.br/H%C3%A1bitos-At%C3%B4micos-M%C3%A9todo-Comprovado-Livrar/dp/8550807567\",\n  \"autorId\": 3,\n  \"categoriaId\": 3\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/livros/importar",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros", "importar"]
+            }
+          }
+        },
+        {
+          "name": "Importar O Homem Mais Rico da Babilônia",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"https://www.amazon.com.br/Homem-Mais-Rico-Babil%C3%B4nia/dp/8595081530\",\n  \"autorId\": 4,\n  \"categoriaId\": 4\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/livros/importar",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros", "importar"]
+            }
+          }
+        },
+        {
+          "name": "Importar Pai Rico, Pai Pobre",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"https://www.amazon.com.br/Pai-Rico-Pobre-atualizada-ampliada-ebook/dp/8550801488\",\n  \"autorId\": 5,\n  \"categoriaId\": 4\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/livros/importar",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros", "importar"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📈 Outros Livros Populares",
+      "item": [
+        {
+          "name": "Importar Homo Deus",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"https://www.amazon.com.br/Homo-Deus-Breve-hist%C3%B3ria-amanh%C3%A3/dp/8535928197\",\n  \"autorId\": 1,\n  \"categoriaId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/livros/importar",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros", "importar"]
+            }
+          }
+        },
+        {
+          "name": "Importar 21 Lições para o Século 21",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"https://www.amazon.com.br/li%C3%A7%C3%B5es-para-s%C3%A9culo-Yuval-Harari/dp/8535930515\",\n  \"autorId\": 1,\n  \"categoriaId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/livros/importar",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros", "importar"]
+            }
+          }
+        },
+        {
+          "name": "Importar Como Fazer Amigos e Influenciar Pessoas",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"https://www.amazon.com.br/Como-Fazer-Amigos-Influenciar-Pessoas/dp/8504014024\",\n  \"autorId\": 7,\n  \"categoriaId\": 2\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/livros/importar",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros", "importar"]
+            }
+          }
+        },
+        {
+          "name": "Importar Quem Pensa Enriquece",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"https://www.amazon.com.br/Quem-Pensa-Enriquece-Napoleon-Hill/dp/8542212460\",\n  \"autorId\": 6,\n  \"categoriaId\": 2\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/livros/importar",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros", "importar"]
+            }
+          }
+        },
+        {
+          "name": "Importar O Alquimista",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"https://www.amazon.com.br/Alquimista-Paulo-Coelho/dp/8576653265\",\n  \"autorId\": 8,\n  \"categoriaId\": 7\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/livros/importar",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros", "importar"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🔍 Verificações",
+      "item": [
+        {
+          "name": "Listar Todos os Livros",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/livros",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros"]
+            }
+          }
+        },
+        {
+          "name": "Buscar por Título - Sapiens",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/livros/buscar?titulo=Sapiens",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros", "buscar"],
+              "query": [
+                {"key": "titulo", "value": "Sapiens"}
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar por ISBN - Sapiens",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/livros/isbn/9788525432180",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros", "isbn", "9788525432180"]
+            }
+          }
+        },
+        {
+          "name": "Livros por Categoria - História",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/livros?categoriaId=1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros"],
+              "query": [
+                {"key": "categoriaId", "value": "1"}
+              ]
+            }
+          }
+        },
+        {
+          "name": "Livros por Autor - Yuval Harari",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/livros?autorId=1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros"],
+              "query": [
+                {"key": "autorId", "value": "1"}
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "👥 Autores e Categorias",
+      "item": [
+        {
+          "name": "Listar Autores",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/autor",
+              "host": ["{{base_url}}"],
+              "path": ["autor"]
+            }
+          }
+        },
+        {
+          "name": "Listar Categorias",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/categoria",
+              "host": ["{{base_url}}"],
+              "path": ["categoria"]
+            }
+          }
+        },
+        {
+          "name": "Livros do Autor - Yuval Harari",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/autor/1/livros",
+              "host": ["{{base_url}}"],
+              "path": ["autor", "1", "livros"]
+            }
+          }
+        },
+        {
+          "name": "Livros da Categoria - História",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/categoria/1/livros",
+              "host": ["{{base_url}}"],
+              "path": ["categoria", "1", "livros"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080",
+      "type": "string"
+    }
+  ]
+}
