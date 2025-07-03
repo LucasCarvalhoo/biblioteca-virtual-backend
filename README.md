@@ -78,18 +78,25 @@ mvn spring-boot:run
 - `GET /api/autores/{id}/livros` - Listar livros do autor
 
 ### **Livros**
-- `GET /api/livros` - Listar todos os livros (com filtros)
+- `GET /api/livros` - Listar todos os livros (com filtros: categoriaId, anoPublicacao, autorId)
 - `GET /api/livros/{id}` - Buscar livro por ID
 - `POST /api/livros` - Criar novo livro
 - `PUT /api/livros/{id}` - Atualizar livro
 - `DELETE /api/livros/{id}` - Deletar livro
-- `GET /api/livros/buscar?titulo={titulo}` - Buscar por título
+- `GET /api/livros/buscar?titulo={titulo}` - Buscar por título (lista)
+- `GET /api/livros/buscar/paginado?titulo={titulo}` - Buscar por título (paginado)
+- `GET /api/livros/isbn/{isbn}` - Buscar livro por ISBN
+- `GET /api/livros/verificar-isbn?isbn={isbn}` - Verificar se ISBN existe
 - `POST /api/livros/importar` - Importar livro via web scraping
 
 ### **Categorias**
-- `GET /api/categorias` - Listar todas as categorias
+- `GET /api/categorias` - Listar todas as categorias (paginado)
+- `GET /api/categorias/{id}` - Buscar categoria por ID
 - `POST /api/categorias` - Criar nova categoria
+- `PUT /api/categorias/{id}` - Atualizar categoria
+- `DELETE /api/categorias/{id}` - Deletar categoria
 - `GET /api/categorias/{id}/livros` - Listar livros da categoria
+- `GET /api/categorias/buscar?nome={nome}` - Buscar categorias por nome
 
 ## 🔍 Exemplos de Uso
 
@@ -144,14 +151,28 @@ curl -X POST http://localhost:8080/api/livros/importar \
 # Por categoria
 curl "http://localhost:8080/api/livros?categoriaId=1"
 
-# Por ano
+# Por ano de publicação
 curl "http://localhost:8080/api/livros?anoPublicacao=2020"
 
 # Por autor
 curl "http://localhost:8080/api/livros?autorId=1"
 
-# Múltiplos filtros
-curl "http://localhost:8080/api/livros?categoriaId=1&anoPublicacao=2020&page=0&size=10"
+# Múltiplos filtros com paginação
+curl "http://localhost:8080/api/livros?categoriaId=1&anoPublicacao=2020&autorId=1&page=0&size=10"
+
+# Buscar por título
+curl "http://localhost:8080/api/livros/buscar?titulo=Sapiens"
+
+# Buscar por ISBN
+curl "http://localhost:8080/api/livros/isbn/9788525432180"
+
+# Verificar se ISBN existe
+curl "http://localhost:8080/api/livros/verificar-isbn?isbn=9788525432180"
+```
+
+### **Buscar Categorias por Nome**
+```bash
+curl "http://localhost:8080/api/categorias/buscar?nome=Ficção"
 ```
 
 ## 🕷️ Web Scraping
@@ -171,6 +192,8 @@ curl "http://localhost:8080/api/livros?categoriaId=1&anoPublicacao=2020&page=0&s
 https://www.amazon.com.br/Sapiens-Uma-Breve-História-Humanidade/dp/8525432180
 https://www.amazon.com.br/poder-do-hábito-Charles-Duhigg/dp/8539004119
 https://www.amazon.com.br/Hábitos-Atômicos-Método-Comprovado-Livrar/dp/8550807567
+https://www.amazon.com.br/Homem-Mais-Rico-Babilônia/dp/8595081530
+https://www.amazon.com.br/Pai-Rico-Pobre-atualizada-ampliada-ebook/dp/8550801488
 ```
 
 ## 📊 Dados Iniciais
@@ -226,8 +249,8 @@ scraping.amazon.delay-between-requests=1000
 
 ### **Livro**
 - Título obrigatório (máx. 200 caracteres)
-- ISBN válido (10 ou 13 dígitos)
-- Ano não futuro
+- ISBN válido (10 ou 13 dígitos) e único
+- Ano não futuro (máx. 2025)
 - Preço positivo
 - Relacionamentos obrigatórios (autor e categoria)
 
@@ -255,6 +278,8 @@ Acesse a documentação interativa via Swagger:
 
 Importe o arquivo `Biblioteca-API.postman_collection.json` no Postman para testar todos os endpoints com URLs reais da Amazon.
 
+**Nota:** Verifique se as URLs na collection estão corretas para os endpoints de autores e categorias.
+
 ## 📈 Melhorias Futuras
 
 - [ ] Implementar autenticação JWT
@@ -263,12 +288,14 @@ Importe o arquivo `Biblioteca-API.postman_collection.json` no Postman para testa
 - [ ] Adicionar mais sites de scraping
 - [ ] Implementar notificações
 - [ ] Adicionar métricas com Micrometer
+- [ ] Atualizar validação de ano dinamicamente
 
 ## 🐛 Problemas Conhecidos
 
 - O scraping pode falhar se a Amazon alterar a estrutura HTML
 - Timeout pode ocorrer em conexões lentas
 - Alguns ISBNs podem não ser encontrados automaticamente
+- Validação de ano está limitada a 2024 (precisa atualização)
 
 ## 🤝 Contribuição
 
