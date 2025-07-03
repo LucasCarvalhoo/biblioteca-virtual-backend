@@ -84,7 +84,11 @@ public class AutorService {
         autorDTO.setNome(autor.getNome());
         autorDTO.setEmail(autor.getEmail());
         autorDTO.setDataNascimento(autor.getDataNascimento());
-        autorDTO.setTotalLivros(autor.getLivros().size());
+        try {
+            autorDTO.setTotalLivros(autor.getLivros() != null ? autor.getLivros().size() : 0);
+        } catch (Exception e) {
+            autorDTO.setTotalLivros(0);
+        }
         return autorDTO;
     }
 

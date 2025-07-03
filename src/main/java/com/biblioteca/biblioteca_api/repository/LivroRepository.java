@@ -31,4 +31,8 @@ public interface LivroRepository extends JpaRepository<Livro, Long> {
     List<Livro> findByTituloContainingIgnoreCase(String titulo);
 
     Page<Livro> findByTituloContainingIgnoreCase(String titulo, Pageable pageable);
+
+    Long countByAutorId(Long autorId);
+
+    Long countByCategoriaId(Long categoriaId);
 }
