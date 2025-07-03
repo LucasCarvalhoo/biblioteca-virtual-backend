@@ -20,7 +20,6 @@ public class AutorDTO {
     private String email;
 
     @NotNull(message = "Data de nascimento é obrigatória")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     @Past(message = "Data de nascimento deve ser anterior à data atual")
     private LocalDate dataNascimento;
 
