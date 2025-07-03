@@ -1,5 +1,6 @@
 package com.biblioteca.biblioteca_api.controller;
 
+import com.biblioteca.biblioteca_api.dto.AutorDTO;
 import com.biblioteca.biblioteca_api.dto.CategoriaDTO;
 import com.biblioteca.biblioteca_api.dto.LivroDTO;
 import com.biblioteca.biblioteca_api.model.Categoria;
@@ -7,7 +8,9 @@ import com.biblioteca.biblioteca_api.service.CategoriaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,14 +19,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/categoria")
+@RequestMapping("/api/categoria")
 public class CategoriaController {
 
     @Autowired
     private CategoriaService categoriaService;
 
     @GetMapping
-    public ResponseEntity<Page<CategoriaDTO>> listarTodos(@PageableDefault(size = 10,sort = "nome") Pageable pageable){
+    public ResponseEntity<Page<CategoriaDTO>> listarTodos() {
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("nome").ascending());
         return ResponseEntity.ok(categoriaService.listarTodos(pageable));
     }
 

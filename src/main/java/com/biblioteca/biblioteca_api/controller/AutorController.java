@@ -6,8 +6,9 @@ import com.biblioteca.biblioteca_api.service.AutorService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,14 +16,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/autor")
+@RequestMapping("/api/autor")
 public class AutorController {
 
     @Autowired
     private AutorService autorService;
 
     @GetMapping
-    public ResponseEntity<Page<AutorDTO>> listarTodos(@PageableDefault(size = 10,sort = "nome") Pageable pageable){
+    public ResponseEntity<Page<AutorDTO>> listarTodos() {
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("nome").ascending());
         return ResponseEntity.ok(autorService.listarTodos(pageable));
     }
 
