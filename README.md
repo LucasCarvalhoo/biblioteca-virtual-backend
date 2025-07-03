@@ -311,10 +311,10 @@ Este projeto está licenciado sob a licença MIT.
 
 ## 👨‍💻 Desenvolvedor
 
-**Seu Nome**
-- Email: seu.email@exemplo.com
-- LinkedIn: https://linkedin.com/in/seu-perfil
-- GitHub: https://github.com/seu-usuario
+**Lucas Carvalho**
+- Email: lucas.carvalho7933@gmail.com
+- LinkedIn: https://linkedin.com/in/lucascarvalho-dev/
+- GitHub: https://github.com/LucasCarvalhoo
 
 ---
 
