@@ -136,6 +136,22 @@ public class LivroService {
         }
     }
 
+    private Integer contarLivrosPorAutor(Long autorId) {
+        try {
+            return Math.toIntExact(livroRepository.countByAutorId(autorId));
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    private Integer contarLivrosPorCategoria(Long categoriaId) {
+        try {
+            return Math.toIntExact(livroRepository.countByCategoriaId(categoriaId));
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
     LivroDTO converterParaDTO(Livro livro) {
         LivroDTO dto = new LivroDTO();
         dto.setId(livro.getId());
@@ -154,12 +170,14 @@ public class LivroService {
         autorDTO.setNome(livro.getAutor().getNome());
         autorDTO.setEmail(livro.getAutor().getEmail());
         autorDTO.setDataNascimento(livro.getAutor().getDataNascimento());
+        autorDTO.setTotalLivros(contarLivrosPorAutor(livro.getAutor().getId()));
         dto.setAutor(autorDTO);
 
         CategoriaDTO categoriaDTO = new CategoriaDTO();
         categoriaDTO.setId(livro.getCategoria().getId());
         categoriaDTO.setNome(livro.getCategoria().getNome());
         categoriaDTO.setDescricao(livro.getCategoria().getDescricao());
+        categoriaDTO.setTotalLivros(contarLivrosPorCategoria(livro.getCategoria().getId()));
         dto.setCategoria(categoriaDTO);
 
         return dto;
