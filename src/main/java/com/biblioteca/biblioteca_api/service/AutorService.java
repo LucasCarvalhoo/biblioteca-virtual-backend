@@ -20,7 +20,7 @@ public class AutorService {
     @Autowired
     private AutorRepository autorRepository;
 
-    public Page<AutorDTO> ListarTodos(Pageable pageable){
+    public Page<AutorDTO> listarTodos(Pageable pageable){
         Page<Autor> autores = autorRepository.findAll(pageable);
         return autores.map(this::converterParaDTO);
     }

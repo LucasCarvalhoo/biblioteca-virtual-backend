@@ -23,7 +23,7 @@ public class AutorController {
 
     @GetMapping
     public ResponseEntity<Page<AutorDTO>> listarTodos(@PageableDefault(size = 10,sort = "nome") Pageable pageable){
-        return ResponseEntity.ok(autorService.ListarTodos(pageable));
+        return ResponseEntity.ok(autorService.listarTodos(pageable));
     }
 
     @GetMapping(value = "/{id}")
