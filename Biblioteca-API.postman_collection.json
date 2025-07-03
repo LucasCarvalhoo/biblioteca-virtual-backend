@@ -1,7 +1,7 @@
 {
   "info": {
-    "name": "Biblioteca API - URLs Reais Amazon",
-    "description": "Collection com URLs reais da Amazon Brasil para teste de scraping",
+    "name": "Biblioteca API - URLs Reais Amazon (Corrigida)",
+    "description": "Collection com URLs reais da Amazon Brasil para teste de scraping - Versão Corrigida",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
@@ -196,7 +196,7 @@
       ]
     },
     {
-      "name": "🔍 Verificações",
+      "name": "🔍 Verificações e Buscas",
       "item": [
         {
           "name": "Listar Todos os Livros",
@@ -226,6 +226,23 @@
           }
         },
         {
+          "name": "Buscar por Título Paginado - Sapiens",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/livros/buscar/paginado?titulo=Sapiens&page=0&size=5",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros", "buscar", "paginado"],
+              "query": [
+                {"key": "titulo", "value": "Sapiens"},
+                {"key": "page", "value": "0"},
+                {"key": "size", "value": "5"}
+              ]
+            }
+          }
+        },
+        {
           "name": "Buscar por ISBN - Sapiens",
           "request": {
             "method": "GET",
@@ -234,6 +251,21 @@
               "raw": "{{base_url}}/api/livros/isbn/9788525432180",
               "host": ["{{base_url}}"],
               "path": ["api", "livros", "isbn", "9788525432180"]
+            }
+          }
+        },
+        {
+          "name": "Verificar se ISBN Existe",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/livros/verificar-isbn?isbn=9788525432180",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros", "verificar-isbn"],
+              "query": [
+                {"key": "isbn", "value": "9788525432180"}
+              ]
             }
           }
         },
@@ -266,6 +298,25 @@
               ]
             }
           }
+        },
+        {
+          "name": "Livros com Múltiplos Filtros",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/livros?categoriaId=1&anoPublicacao=2014&autorId=1&page=0&size=10",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros"],
+              "query": [
+                {"key": "categoriaId", "value": "1"},
+                {"key": "anoPublicacao", "value": "2014"},
+                {"key": "autorId", "value": "1"},
+                {"key": "page", "value": "0"},
+                {"key": "size", "value": "10"}
+              ]
+            }
+          }
         }
       ]
     },
@@ -278,9 +329,39 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/autor",
+              "raw": "{{base_url}}/api/autores",
               "host": ["{{base_url}}"],
-              "path": ["autor"]
+              "path": ["api", "autores"]
+            }
+          }
+        },
+        {
+          "name": "Buscar Autor por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/autores/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "autores", "1"]
+            }
+          }
+        },
+        {
+          "name": "Criar Novo Autor",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Novo Autor\",\n  \"email\": \"novo.autor@exemplo.com\",\n  \"dataNascimento\": \"1980-01-01\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/autores",
+              "host": ["{{base_url}}"],
+              "path": ["api", "autores"]
             }
           }
         },
@@ -290,9 +371,54 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/categoria",
+              "raw": "{{base_url}}/api/categorias",
               "host": ["{{base_url}}"],
-              "path": ["categoria"]
+              "path": ["api", "categorias"]
+            }
+          }
+        },
+        {
+          "name": "Buscar Categoria por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/categorias/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "categorias", "1"]
+            }
+          }
+        },
+        {
+          "name": "Buscar Categorias por Nome",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/categorias/buscar?nome=História",
+              "host": ["{{base_url}}"],
+              "path": ["api", "categorias", "buscar"],
+              "query": [
+                {"key": "nome", "value": "História"}
+              ]
+            }
+          }
+        },
+        {
+          "name": "Criar Nova Categoria",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Nova Categoria\",\n  \"descricao\": \"Descrição da nova categoria\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/categorias",
+              "host": ["{{base_url}}"],
+              "path": ["api", "categorias"]
             }
           }
         },
@@ -302,9 +428,9 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/autor/1/livros",
+              "raw": "{{base_url}}/api/autores/1/livros",
               "host": ["{{base_url}}"],
-              "path": ["autor", "1", "livros"]
+              "path": ["api", "autores", "1", "livros"]
             }
           }
         },
@@ -314,9 +440,169 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/categoria/1/livros",
+              "raw": "{{base_url}}/api/categorias/1/livros",
               "host": ["{{base_url}}"],
-              "path": ["categoria", "1", "livros"]
+              "path": ["api", "categorias", "1", "livros"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📝 CRUD Completo - Livros",
+      "item": [
+        {
+          "name": "Criar Livro Manual",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Livro Teste\",\n  \"isbn\": \"9781234567890\",\n  \"anoPublicacao\": 2023,\n  \"preco\": 39.90,\n  \"autorId\": 1,\n  \"categoriaId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/livros",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros"]
+            }
+          }
+        },
+        {
+          "name": "Buscar Livro por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/livros/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros", "1"]
+            }
+          }
+        },
+        {
+          "name": "Atualizar Livro",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Livro Atualizado\",\n  \"isbn\": \"9781234567890\",\n  \"anoPublicacao\": 2024,\n  \"preco\": 49.90,\n  \"autorId\": 1,\n  \"categoriaId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/livros/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros", "1"]
+            }
+          }
+        },
+        {
+          "name": "Deletar Livro",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/livros/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🧪 Testes de Validação",
+      "item": [
+        {
+          "name": "Erro - Livro sem título",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"isbn\": \"9781234567890\",\n  \"anoPublicacao\": 2023,\n  \"preco\": 39.90,\n  \"autorId\": 1,\n  \"categoriaId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/livros",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros"]
+            }
+          }
+        },
+        {
+          "name": "Erro - ISBN inválido",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Livro Teste\",\n  \"isbn\": \"123\",\n  \"anoPublicacao\": 2023,\n  \"preco\": 39.90,\n  \"autorId\": 1,\n  \"categoriaId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/livros",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros"]
+            }
+          }
+        },
+        {
+          "name": "Erro - Ano futuro",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Livro Teste\",\n  \"isbn\": \"9781234567890\",\n  \"anoPublicacao\": 2030,\n  \"preco\": 39.90,\n  \"autorId\": 1,\n  \"categoriaId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/livros",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros"]
+            }
+          }
+        },
+        {
+          "name": "Erro - Preço negativo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Livro Teste\",\n  \"isbn\": \"9781234567890\",\n  \"anoPublicacao\": 2023,\n  \"preco\": -10.00,\n  \"autorId\": 1,\n  \"categoriaId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/livros",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros"]
+            }
+          }
+        },
+        {
+          "name": "Erro - Autor inexistente",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Livro Teste\",\n  \"isbn\": \"9781234567890\",\n  \"anoPublicacao\": 2023,\n  \"preco\": 39.90,\n  \"autorId\": 999,\n  \"categoriaId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/livros",
+              "host": ["{{base_url}}"],
+              "path": ["api", "livros"]
             }
           }
         }
